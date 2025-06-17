@@ -1,0 +1,293 @@
+/* Responsive Design Styles */
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 0 15px;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        height: auto;
+        padding: 20px 15px;
+        gap: 20px;
+    }
+    
+    .main-nav {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .article-title {
+        font-size: 28px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .article-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .article-stats {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .top-bar-content {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+    
+    .lab-info {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .weather-info {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .fancy-l {
+        font-size: 48px;
+    }
+    
+    .lab-text {
+        font-size: 28px;
+    }
+    
+    .login-content {
+        padding: 30px 20px;
+    }
+    
+    /* Mobile modal adjustments */
+    .ugc-editor-content {
+        width: 95%;
+        padding: 20px;
+        max-height: 95vh;
+    }
+    
+    .admin-content {
+        width: 95%;
+        padding: 20px;
+        max-height: 95vh;
+    }
+    
+    /* Mobile admin tabs */
+    .admin-tabs {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .admin-tab {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    
+    /* Mobile table responsiveness */
+    .content-table {
+        font-size: 14px;
+    }
+    
+    .content-table th,
+    .content-table td {
+        padding: 8px 6px;
+    }
+    
+    /* Mobile action buttons */
+    .action-buttons {
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    .action-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .article-stats {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .stat-item {
+        justify-content: flex-start;
+        width: 100%;
+    }
+    
+    .weather-info {
+        gap: 8px;
+    }
+    
+    .weather-item {
+        font-size: 11px;
+    }
+    
+    /* Very small screen adjustments */
+    .ugc-form-group input,
+    .ugc-form-group textarea,
+    .ugc-form-group select {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .form-group input {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    /* Mobile UGC item layout */
+    .ugc-item-actions {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 4px;
+    }
+    
+    .ugc-action-btn {
+        flex: 1;
+        min-width: 60px;
+        text-align: center;
+    }
+    
+    /* Mobile stats grid */
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    /* Mobile comment actions */
+    .comment-actions {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .comment-action {
+        flex: 1;
+        justify-content: center;
+        min-width: 80px;
+    }
+    
+    /* Mobile navigation improvements */
+    .main-nav {
+        gap: 15px;
+    }
+    
+    .main-nav a {
+        font-size: 14px;
+        padding: 8px 0;
+    }
+    
+    /* Mobile sidebar adjustments */
+    .sidebar-section {
+        padding: 16px;
+    }
+    
+    .sidebar-title {
+        font-size: 16px;
+    }
+    
+    /* Mobile performance monitor */
+    .performance-monitor {
+        padding: 15px;
+    }
+    
+    .monitor-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    
+    /* Mobile file upload */
+    .ugc-file-upload {
+        padding: 20px 15px;
+    }
+    
+    .ugc-file-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
+
+/* Landscape orientation on small devices */
+@media (max-width: 768px) and (orientation: landscape) {
+    .main-header {
+        position: relative; /* Remove sticky to save space */
+    }
+    
+    .top-bar {
+        display: none; /* Hide top bar in landscape to save space */
+    }
+    
+    .header-content {
+        padding: 15px;
+        height: 60px;
+    }
+    
+    .fancy-l {
+        font-size: 40px;
+    }
+    
+    .lab-text {
+        font-size: 24px;
+    }
+}
+
+/* Dark mode support (if needed in future) */
+@media (prefers-color-scheme: dark) {
+    /* This can be expanded for dark mode support */
+    .toast {
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .article-stats {
+        border-top: 2px solid var(--border-light);
+        border-bottom: 2px solid var(--border-light);
+    }
+    
+    .sidebar-section {
+        border: 2px solid var(--border-light);
+    }
+    
+    .comment-item {
+        border: 2px solid var(--border-light);
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .loading {
+        animation: none;
+    }
+    
+    .lab-badge {
+        animation: none;
+    }
+}

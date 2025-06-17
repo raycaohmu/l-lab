@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="L-Lab Research Platform - Digital Pathology & AI Research Laboratory">
+    <meta name="keywords" content="digital pathology, AI, machine learning, cancer research, biostatistics">
+    <meta name="author" content="L-Lab Research Team">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="L-Lab Research Platform | Digital Pathology & AI">
+    <meta property="og:description" content="A comprehensive digital pathology research platform featuring user authentication, content creation, and administrative capabilities.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://llab-platform.netlify.app">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="L-Lab Research Platform">
+    <meta name="twitter:description" content="Digital Pathology & AI Research Laboratory">
+    
+    <title>L-Lab Research Platform | Digital Pathology & AI</title>
+    
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Source+Sans+Pro:wght@300;400;600;700&family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/ugc-admin.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>">
+</head>
+<body>
+    <!-- Top bar with real-time info -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="lab-info">
+                <span>L-Lab Research Platform</span>
+                <span class="lab-badge">Innovation Driven</span>
+                <span>AI & Biostatistics Research • Exploring the Future</span>
+            </div>
+            <div class="weather-info" id="weather-info">
+                <div class="weather-item">
+                    <i class="fas fa-map-marker-alt weather-icon"></i>
+                    <span>Shanghai</span>
+                </div>
+                <div class="weather-item">
+                    <i class="fas fa-cloud-sun weather-icon"></i>
+                    <span id="weather-condition">Partly Cloudy</span>
+                </div>
+                <div class="weather-item">
+                    <span class="weather-temp" id="temperature">22°C</span>
+                </div>
+                <div class="weather-item">
+                    <i class="fas fa-eye weather-icon"></i>
+                    <span>Visibility 10km</span>
+                </div>
+                <div class="weather-item">
+                    <i class="fas fa-wind weather-icon"></i>
+                    <span>SW 15km/h</span>
+                </div>
+                <div class="weather-item">
+                    <span id="current-date">Monday, June 17, 2025</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main navigation -->
+    <header class="main-header">
+        <div class="header-content">
+            <a href="#" class="journal-logo">
+                <span class="fancy-l">ℒ</span><span class="lab-text">-Lab</span>
+            </a>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="#" class="active" onclick="navigateToSection('Research')">Research</a></li>
+                    <li><a href="#" onclick="navigateToSection('Methods')">Methods</a></li>
+                    <li><a href="#" onclick="navigateToSection('Data')">Data</a></li>
+                    <li><a href="#" onclick="navigateToSection('Tools')">Tools</a></li>
+                    <li><a href="#" onclick="navigateToSection('About')">About</a></li>
+                    <li id="user-menu" style="display: none;"><a href="#" onclick="showUserContent()">My Content</a></li>
+                </ul>
+            </nav>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <!-- Header Create Button (Shows when logged in) -->
+                <button class="header-create-btn" id="header-create-btn" style="display: none;" onclick="toggleCreateMenu()">
+                    <i class="fas fa-edit"></i>
+                    <span>Create</span>
+                </button>
+                <button class="access-btn" onclick="showLogin()">
+                    <i class="fas fa-key"></i>
+                    Access Tutorials
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main content -->
+    <main class="main-content">
+        <!-- Featured article section -->
+        <section class="featured-section">
+            <article class="featured-article">
+                <div class="article-category">Featured Research</div>
+                <h1 class="article-title">Digital pathology analysis reveals immune checkpoint inhibitor resistance mechanisms in non-small cell lung cancer</h1>
+                <h2 class="article-subtitle">A comprehensive computational framework for understanding acquired resistance through spatial tumor microenvironment analysis</h2>
+                
+                <div class="article-meta">
+                    <!-- Content will be loaded by JavaScript -->
+                </div>
+                
+                <!-- Article statistics -->
+                <div class="article-stats">
+                    <!-- Content will be loaded by JavaScript -->
+                </div>
+                
+                <div class="article-abstract">
+                    <!-- Content will be loaded by JavaScript -->
+                </div>
+                
+                <a href="#" class="read-more" onclick="showLogin()">
+                    <!-- Content will be loaded by JavaScript -->
+                </a>
+            </article>
+            
+            <!-- Comments section -->
+            <div class="comments-section" id="comments-section">
+                <div class="comments-header">
+                    <!-- Content will be loaded by JavaScript -->
+                </div>
+                
+                <!-- Comment form will be added by JavaScript -->
+                
+                <!-- Comments list -->
+                <div class="comments-list" id="comments-list">
+                    <!-- Content will be loaded by JavaScript -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Research highlights -->
+            <div class="sidebar-section">
+                <!-- Content will be loaded by JavaScript -->
+            </div>
+        </aside>
+    </main>
+    
+    <!-- Login Modal -->
+    <div class="login-modal" id="login-modal">
+        <div class="login-content">
+            <!-- Content will be created by JavaScript -->
+        </div>
+    </div>
+    
+    <!-- Toast notification container -->
+    <div id="toast-container"></div>
+    
+    <!-- UGC Content Editor Modal -->
+    <div class="ugc-editor-modal" id="ugc-editor-modal">
+        <div class="ugc-editor-content">
+            <!-- Content will be created by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Admin Panel Modal -->
+    <div class="admin-panel" id="admin-panel">
+        <div class="admin-content">
+            <!-- Content will be created by JavaScript -->
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/main.js"></script>
+    <script src="js/modals-new.js"></script>
+    <script src="js/ugc.js"></script>
+
+    <!-- Floating Create Button -->
+    <button class="floating-create-btn" id="floating-create-btn" onclick="toggleCreateMenu()">
+        <i class="fas fa-plus"></i>
+        <span class="btn-text">Create</span>
+    </button>
+    
+    <!-- Create Menu Dropdown -->
+    <div class="create-menu" id="create-menu">
+        <button class="create-menu-item" onclick="showUGCEditor('', 'blog'); hideCreateMenu();">
+            <i class="fas fa-pen-fancy" style="color: #667eea;"></i>
+            <div class="item-info">
+                <div class="item-title">Write Blog</div>
+                <div class="item-desc">Share research insights and methods</div>
+            </div>
+        </button>
+        
+        <button class="create-menu-item" onclick="showUGCEditor('', 'tutorial'); hideCreateMenu();">
+            <i class="fas fa-chalkboard-teacher" style="color: #f093fb;"></i>
+            <div class="item-info">
+                <div class="item-title">Create Tutorial</div>
+                <div class="item-desc">Step-by-step learning content</div>
+            </div>
+        </button>
+        
+        <button class="create-menu-item" onclick="showUGCEditor('', 'documentation'); hideCreateMenu();">
+            <i class="fas fa-cloud-upload-alt" style="color: #4facfe;"></i>
+            <div class="item-info">
+                <div class="item-title">Upload Document</div>
+                <div class="item-desc">Share protocols and resources</div>
+            </div>
+        </button>
+        
+        <div class="create-menu-divider"></div>
+        
+        <button class="create-menu-item" onclick="showUGCEditor('', 'code'); hideCreateMenu();">
+            <i class="fas fa-code" style="color: #27ae60;"></i>
+            <div class="item-info">
+                <div class="item-title">Share Code</div>
+                <div class="item-desc">Upload code examples and scripts</div>
+            </div>
+        </button>
+        
+        <button class="create-menu-item" onclick="showUGCEditor('', 'dataset'); hideCreateMenu();">
+            <i class="fas fa-database" style="color: #e67e22;"></i>
+            <div class="item-info">
+                <div class="item-title">Share Dataset</div>
+                <div class="item-desc">Upload research data and samples</div>
+            </div>
+        </button>
+    </div>
+    
+    <!-- Performance monitoring -->
+    <script>
+        // Basic performance monitoring
+        window.addEventListener('load', function() {
+            if ('performance' in window) {
+                const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+                console.log('Page load time:', loadTime + 'ms');
+            }
+        });
+    </script>
+</body>
+</html>
