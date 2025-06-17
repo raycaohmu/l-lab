@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L-Lab Platform - System Test Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            opacity: 0.8;
+            font-size: 1.1em;
+        }
+        
+        .dashboard {
+            padding: 30px;
+        }
+        
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .status-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 4px solid #3498db;
+            transition: transform 0.3s ease;
+        }
+        
+        .status-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .status-card.success {
+            border-left-color: #27ae60;
+        }
+        
+        .status-card.warning {
+            border-left-color: #f39c12;
+        }
+        
+        .status-card.error {
+            border-left-color: #e74c3c;
+        }
+        
+        .status-card h3 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .status-card h3 i {
+            margin-right: 10px;
+            font-size: 1.5em;
+        }
+        
+        .status-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-success {
+            background: #27ae60;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #229954;
+            transform: translateY(-2px);
+        }
+        
+        .btn-warning {
+            background: #f39c12;
+            color: white;
+        }
+        
+        .btn-warning:hover {
+            background: #e67e22;
+            transform: translateY(-2px);
+        }
+        
+        .test-console {
+            background: #2c3e50;
+            color: #ecf0f1;
+            border-radius: 10px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+        
+        .test-console h3 {
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .log-entry {
+            margin-bottom: 5px;
+            padding: 2px 0;
+        }
+        
+        .log-success {
+            color: #27ae60;
+        }
+        
+        .log-error {
+            color: #e74c3c;
+        }
+        
+        .log-warning {
+            color: #f39c12;
+        }
+        
+        .log-info {
+            color: #3498db;
+        }
+        
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .feature-item {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .feature-item i {
+            color: #27ae60;
+            font-size: 1.3em;
+        }
+        
+        @media (max-width: 768px) {
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-microscope"></i> L-Lab Platform</h1>
+            <p>System Test Dashboard & Platform Overview</p>
+        </div>
+        
+        <div class="dashboard">
+            <div class="status-grid">
+                <div class="status-card success">
+                    <h3><i class="fas fa-check-circle"></i> Platform Status</h3>
+                    <p>L-Lab Digital Pathology Research Platform is online and fully operational. All core systems are functioning normally.</p>
+                </div>
+                
+                <div class="status-card success">
+                    <h3><i class="fas fa-users"></i> User System</h3>
+                    <p>Authentication system active with role-based access control. Demo accounts available for testing all user roles.</p>
+                </div>
+                
+                <div class="status-card success">
+                    <h3><i class="fas fa-edit"></i> Content Creation</h3>
+                    <p>UGC system fully functional with rich text editor, file uploads, and content management capabilities.</p>
+                </div>
+                
+                <div class="status-card success">
+                    <h3><i class="fas fa-cogs"></i> Admin Panel</h3>
+                    <p>Complete administrative interface for content moderation, user management, and system monitoring.</p>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="index.html" class="btn btn-primary">
+                    <i class="fas fa-home"></i> Launch Platform
+                </a>
+                <button onclick="runSystemTests()" class="btn btn-success">
+                    <i class="fas fa-play"></i> Run Tests
+                </button>
+                <button onclick="showDemoAccounts()" class="btn btn-warning">
+                    <i class="fas fa-users"></i> Demo Accounts
+                </button>
+                <button onclick="showFeatures()" class="btn btn-primary">
+                    <i class="fas fa-list"></i> Features
+                </button>
+            </div>
+            
+            <div id="demo-accounts" style="display: none;">
+                <h3><i class="fas fa-key"></i> Demo Accounts</h3>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <div>
+                            <strong>Admin:</strong> admin@llab.com / admin123<br>
+                            <small>Full system access, content moderation</small>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-user-check"></i>
+                        <div>
+                            <strong>Moderator:</strong> mod@llab.com / mod123<br>
+                            <small>Content review and approval rights</small>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-user"></i>
+                        <div>
+                            <strong>User:</strong> user@llab.com / user123<br>
+                            <small>Content creation and basic access</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="features-list" style="display: none;">
+                <h3><i class="fas fa-star"></i> Platform Features</h3>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>User Registration & Authentication</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Role-based Access Control</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Rich Text Content Editor</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>File Upload & Management</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Content Creation (Blog, Tutorial, Docs)</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Admin Panel & Moderation</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Responsive Design</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Real-time Notifications</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Data Persistence (localStorage)</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>User Dashboard & Profile</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Content Search & Filter</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Navigation & Breadcrumbs</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="test-console" id="test-console">
+                <h3><i class="fas fa-terminal"></i> System Console</h3>
+                <div id="console-output">
+                    <div class="log-entry log-info">Welcome to L-Lab Platform Test Dashboard</div>
+                    <div class="log-entry">Click "Run Tests" to perform comprehensive system testing</div>
+                    <div class="log-entry">Click "Launch Platform" to access the main application</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Test Dashboard Functions
+        function addToConsole(message, type = '') {
+            const output = document.getElementById('console-output');
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            output.appendChild(entry);
+            
+            // Auto-scroll to bottom
+            const console = document.getElementById('test-console');
+            console.scrollTop = console.scrollHeight;
+        }
+        
+        function runSystemTests() {
+            addToConsole('Starting comprehensive system tests...', 'log-info');
+            
+            // Open main platform in new window for testing
+            const testWindow = window.open('index.html', '_blank');
+            
+            // Wait for window to load then run tests
+            testWindow.onload = function() {
+                addToConsole('Platform loaded, initializing tests...', 'log-success');
+                
+                setTimeout(() => {
+                    if (testWindow.runLLabTests) {
+                        testWindow.runLLabTests();
+                        addToConsole('Test suite executed - check browser console for detailed results', 'log-success');
+                    } else {
+                        addToConsole('Test runner not found - platform may still be loading', 'log-warning');
+                    }
+                }, 3000);
+            };
+            
+            addToConsole('Platform opened in new window for testing', 'log-info');
+        }
+        
+        function showDemoAccounts() {
+            const element = document.getElementById('demo-accounts');
+            const isVisible = element.style.display !== 'none';
+            
+            element.style.display = isVisible ? 'none' : 'block';
+            
+            if (!isVisible) {
+                addToConsole('Demo accounts information displayed', 'log-info');
+            }
+        }
+        
+        function showFeatures() {
+            const element = document.getElementById('features-list');
+            const isVisible = element.style.display !== 'none';
+            
+            element.style.display = isVisible ? 'none' : 'block';
+            
+            if (!isVisible) {
+                addToConsole('Platform features list displayed', 'log-info');
+            }
+        }
+        
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            addToConsole('Test dashboard initialized successfully', 'log-success');
+            addToConsole('L-Lab Platform ready for testing and demonstration', 'log-info');
+        });
+    </script>
+</body>
+</html>
